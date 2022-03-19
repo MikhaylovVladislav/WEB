@@ -62,7 +62,7 @@ input {
 <button id="mu" class="but_num">*</button>
 <br>
 <button id="0" class="but_zero">0</button>
-<button id="." class="but_num">.</button>
+<button id="t" class="but_num">.</button>
 <button id="de" class="but_num">/</button>
 <br>
 <button id="r" class="but_ravno">=</button>
@@ -88,7 +88,6 @@ $('#1').on('click', function(){
 $('#pole').val($('#pole').val()+"1");
 k='1';
 nums[i]=nums[i]+k;
-alert(nums[i]);
  });
  
  $('#2').on('click', function(){
@@ -178,6 +177,12 @@ i=0;
 nums[i]='+';
  });
  
+ $('#t').on('click', function(){
+$('#pole').val($('#pole').val()+".");
+k='.';
+nums[i]=nums[i]+k;
+ });
+ 
  
  $('#b1').on('click', function(){
 $('#pole').val(
@@ -198,7 +203,6 @@ $.each(nums, function (index, value) {
 if(value.indexOf("+-")>-1){
 valg= value.slice(2);
 valg=parseFloat(valg);
-
 sum=sum+valg;
 }
 
@@ -220,34 +224,26 @@ sum=sum+valg;
 }
 
 if(value.indexOf("-")>-1){
-//valg= value.slice(1);
 valg=parseFloat(value);
 sum=sum+valg;
-
 }
+
 if(value.indexOf('+')>-1){
 valg= value.slice(1);
 val=parseFloat(valg);
 sum=sum+val;
 }
-
-
-
 });
-
 
 
 nums.length=0;
 i=0;
 $('#pole').val(sum);
 if(sum<0){
-alert("check <0 "+sum);
 nums[i]=""+sum;
 }else if (sum>=0){
-alert("ch "+sum);
 nums[i]="+"+sum;
 }
-alert ("итого  "+nums[i]);
 
 
  });
