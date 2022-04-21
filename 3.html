@@ -1,0 +1,116 @@
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Михайлов ПИ-321</title>
+
+<style>
+fieldset.com {
+  background-color: #696969;
+  font-size:16px; 
+  padding:6px; 
+  width:750px;
+position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+fieldset.f {
+  background-color: #eeeeee;
+  font-size:16px; 
+  padding:12px; 
+
+
+legend.leg {
+  background-color: #000000;
+  color: #A9A9A9;
+  padding: 5px 10px;
+}
+
+input {
+  margin: 5px;
+}
+  </style>
+    <script type="text/javascript" src="libs/jquery-3.6.0.min.js"></script>
+ </head>
+ <body>
+<fieldset class="com">
+<legend align="center" class="leg">Новости</legend>
+<fieldset class="f" id="f1">
+
+<button id='check'>Проверить id</button>
+<input type="number">
+</fieldset>
+<h2 id="h2" class="gg">Заголовок</h2>
+<p id="p1">Краткое описание</p>
+<button id='finish'>Загрузить еще</button>
+</fieldset>
+  
+
+ <script>
+
+$(document).ready(function(){
+$( "<p>Это новый параграф</p>" );
+	let k=0;
+	var cloneCount = 0;
+	var i = 0;
+	
+	
+	var jqxhr = $.ajax( {url: "news.json", dataType: "json"})
+  .done(function(data) {
+  
+  const myJSON = JSON.stringify(data);
+let obj = JSON.parse(myJSON)
+
+$( "#f1" ).clone(true).attr('id', cloneCount++).insertAfter("#f1").prependTo( ".com" );
+
+$( "#h2" ).text(obj.header[0]);
+$( "#p1" ).text(obj.desc[0]);
+
+    alert( "success");
+
+  })
+  .fail(function() {
+    alert( "error" );
+  })
+  .always(function() {
+    alert( "complete" );
+  });
+  
+
+  
+	function randomColor() {
+		return '#' + Math.random().toString(16).slice(2, 8);
+	};
+
+	/*	
+			
+	
+			//$( "#f1" ).clone(true).prependTo( ".com" );
+			k++;
+			$("#f1").clone(true).prependTo( ".com" ).find('*[id]').addBack().each(function () { 
+
+			$(this).attr('id', function(i , id) { return id  + 2}) 
+					var clickId = $(this).prop('id');
+					//  alert(clickId);
+					//	$( clickId ).text(obj.header[0]);
+
+			});
+			$( "#h21" ).text(obj.header[1]);
+			$( "#p10" ).text(obj.desc[1]);
+			alert("go "+k);
+			*/
+		$('#finish').on('click', function(){ /// press button
+				$('body').css('background', randomColor());
+
+		
+});
+
+});
+
+ </script>
+ 
+   
+   
+
+ </body>
+</html>
