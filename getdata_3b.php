@@ -1,5 +1,5 @@
 <?php
-require connectToDB.php; 
+require "connectToDB.php";
 $names = array();
 $emails = array();
 $messages = array();

@@ -1,5 +1,5 @@
 <?php
-require connectToDB.php;
+require "connectToDB.php";
 
 $name=json_decode($_GET['sname']);
 $email=json_decode($_GET['semail']);
