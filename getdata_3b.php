@@ -1,15 +1,14 @@
 <?php
-
+require connectToDB.php; 
 $names = array();
 $emails = array();
 $messages = array();
 $data = array();
 $i=0;
 
-$linkmy=mysqli_connect("localhost","root","") or die ("Невозможно
-подключиться к серверу");
+
  mysqli_query($linkmy, 'SET NAMES utf8');
- mysqli_select_db($linkmy, "review") or die("Нет такой таблицы!");
+
 $result=mysqli_query($linkmy, "SELECT * FROM reviews"); // запрос на выборку сведений о пользователях
 while ($row=mysqli_fetch_array($result)){// для каждой строки из запроса
 $names[$i]=$row['name'];

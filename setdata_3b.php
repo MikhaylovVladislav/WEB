@@ -1,14 +1,12 @@
 <?php
+require connectToDB.php;
 
 $name=json_decode($_GET['sname']);
 $email=json_decode($_GET['semail']);
 $message=json_decode($_GET['smess']);
 
 
-$linkmy=mysqli_connect("localhost","root","") or die ("Невозможно
-подключиться к серверу");
  mysqli_query($linkmy, 'SET NAMES utf8');
- mysqli_select_db($linkmy, "review") or die("Нет такой таблицы!");
  
  $sql_add = "INSERT INTO reviews SET name='".$name.
 "', email='".$email."', message='".$message. "'";
