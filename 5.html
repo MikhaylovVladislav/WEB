@@ -1,0 +1,70 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Михайлов В.А. ПИ-321</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+  <script src="jquery.myPlugin.js"></script>
+  <style>
+   div.drag {
+    position: absolute;
+    background-color: #abc;
+    left: 50px;
+    width: 90px;
+    height: 90px;
+    margin: 5px;
+  }
+  img{
+    position: absolute;
+    left: 110px;
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+  }
+  body {font-family:arial;font-style:bold}
+	  a {color:#666; text-decoration:none}
+		#menu {list-style:none;width:160px;padding-left:10px;}
+		#menu li {margin:0;padding:5px;cursor:hand;cursor:pointer}
+  </style>
+  </head>
+  <body>
+  <div id="canvas_div_no_cursor">
+   <img src="images/cross.png" alt="" id="cross" class="crossfire" >
+   <div class="drag"></div>
+   </div>
+  <script>
+  $(document).ready(function(){
+  $('#menu').animateMenu({animatePadding: 30, defaultPadding:10});
+  document.getElementById('canvas_div_no_cursor').style.cursor = "none";
+	let mouseIsPress=false;
+	
+ $( ".drag" ).animate({"left": "+=1000px" }, 1000 );
+
+$('.drag').on('click', function(){
+$(this).remove();
+alert("win");
+});
+	$(document).mousemove(function(event){
+		
+			$(".crossfire").offset({top: event.pageY-50, left: event.pageX-50});
+			//$(".drag").css('opacity','0.3');
+		
+	});
+	$(".drag").mousedown(function(){ 
+		mouseIsPress=true;
+	});
+	$(document).mouseup(function() {
+		mouseIsPress=false;
+		$(".drag").css('opacity','1');
+
+	});
+
+});
+
+
+  </script>
+  </body>
+  </html>
