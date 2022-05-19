@@ -231,6 +231,17 @@ li{
   </form>
 </div>
 
+<div id="dialog-confirm" title="Оформить заказ?">
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Совершая заказ Вы подтверждаете согласие с условиями нашего договора-оферты</p>
+</div>
+
+<div id="dialog-message" title="Заказ оформлен">
+  <p>
+    <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+    Спасибо за Ваш заказ
+  </p>
+
+</div>
 <script>
 
 $(document).ready(function(){
@@ -288,16 +299,29 @@ var dialog, form,
     function addUser() {
       var valid = true;
       allFields.removeClass( "ui-state-error" );
- 
- 
-      if ( valid ) {
-        $( "#users tbody" ).append( "<tr>" +
-          "<td>" + name.val() + "</td>" +
-          "<td>" + email.val() + "</td>" +
-          "<td>" + password.val() + "</td>" +
-        "</tr>" );
         dialog.dialog( "close" );
+	  $( "#dialog-confirm" ).dialog({
+      resizable: false,
+      height: "auto",
+      width: 400,
+      modal: true,
+      buttons: {
+        "Согласен(а)": function() {
+          $( this ).dialog( "close" );
+		  $( "#dialog-message" ).dialog({
+      modal: true,
+      buttons: {
+        "Ок": function() {
+          $( this ).dialog( "close" );
+        }
       }
+    });
+        },
+        "Не согласен(а)": function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
       return valid;
     }
  
@@ -308,7 +332,7 @@ var dialog, form,
       modal: true,
       buttons: {
         "Оформить заказ": addUser,
-        Cancel: function() {
+        "Закрыть": function() {
           dialog.dialog( "close" );
         }
       },
