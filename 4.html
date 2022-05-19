@@ -164,82 +164,67 @@ li{
 
 
 <fieldset class="gen">
-<div id="tabs">
-  <ul>
-    <li id="t1"><a href="#tabs-1">Межгородные поезда</a></li>
-    <li id="t2"><a href="#tabs-2">Пригородные поезда</a></li>
-  </ul>
-  <div id="tabs-1">
-  
-   <div class="widget">
-<div class="ui-widget">
-
-  <input id="tags" size="26"> 
-  <input id="tags2" size="26"> 
-  <input type="text" id="datepicker" size="14">
-  
-  <button id="find">Найти</button>
-</div>
-
-</div>
-	
-  </div>
-  <div id="tabs-2">
-  
-<div class="widget">
-
-
-<div class="ui-widget">
-
-<input id="tags3" size="26"> 
-<input id="tags4" size="26"> 
-<input type="text" id="datepicker2" size="14">
-  
-<button id="find" class="ui-state-default ui-corner-all">Найти</button>
-</div>
-
-</div>
-	
-  </div>
-
-</div>
+	<div id="tabs">
+		<ul>
+			<li id="t1"><a href="#tabs-1">Межгородные поезда</a></li>
+			<li id="t2"><a href="#tabs-2">Пригородные поезда</a></li>
+		</ul>
+		<div id="tabs-1">
+			<div class="widget">
+				<div class="ui-widget">
+					<input id="tags" size="26"> 
+					<input id="tags2" size="26"> 
+					<input type="text" id="datepicker" size="14">
+					<button id="find">Найти</button>
+				</div>
+			</div>
+		</div>
+		<div id="tabs-2">
+			<div class="widget">
+				<div class="ui-widget">
+					<input id="tags3" size="26"> 
+					<input id="tags4" size="26"> 
+					<input type="text" id="datepicker2" size="14"> 
+					<button id="find" class="ui-state-default ui-corner-all">Найти</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </fieldset>
 
 <div id="dialog-form" title="Купить Ж\Д билет">
-  <p id="vd" class="validateTips">  </p>
-  <form>
-    <fieldset class="div">
-		<label for="amount">Укажите количество билетов:</label>
-		<input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;" value=1>
-		<div id="slider-range-max"></div>
-		<br>
-		<div class="widget">
+	<p id="vd" class="validateTips">  </p>
+	<form>
 		<fieldset class="div">
-			<legend>Выберите тип вагона </legend>
-			<label for="radio-1">Плацкарт</label>
-			<input class="r" type="radio" name="radio-1" id="radio-1" value="plac" checked="checked">
-			<label for="radio-2">Купе</label>
-			<input class="r" type="radio" name="radio-1" id="radio-2" value="cupe">
-			
+			<label for="amount">Укажите количество билетов:</label>
+			<input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;" value=1>
+			<div id="slider-range-max"></div>
+			<br>
+			<div class="widget">
+				<fieldset class="div">
+					<legend>Выберите тип вагона </legend>
+					<label for="radio-1">Плацкарт</label>
+					<input class="r" type="radio" name="radio-1" id="radio-1" value="plac" checked="checked">
+					<label for="radio-2">Купе</label>
+					<input class="r" type="radio" name="radio-1" id="radio-2" value="cupe">	
+				</fieldset>
+			</div>
+			<input type="text" id="result" title="Будет известно, когда выберети тип вагона и количество мест" >
+			<!-- Allow form submission with keyboard without duplicating the dialog button -->
+			<input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
 		</fieldset>
- </div>
-		<input type="text" id="result" title="Будет известно, когда выберети тип вагона и количество мест" >
-      <!-- Allow form submission with keyboard without duplicating the dialog button -->
-      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
-    </fieldset>
-  </form>
+	</form>
 </div>
 
 <div id="dialog-confirm" title="Оформить заказ?">
-  <p><span  class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Совершая заказ Вы подтверждаете согласие с условиями нашего договора-оферты</p>
+	<p><span  class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Совершая заказ Вы подтверждаете согласие с условиями нашего договора-оферты</p>
 </div>
 
 <div id="dialog-message" title="Заказ оформлен">
-  <p>
-    <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
-    Спасибо за Ваш заказ
-  </p>
-
+	<p>
+		<span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+		Спасибо за Ваш заказ
+	</p>
 </div>
 <script>
 
