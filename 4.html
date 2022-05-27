@@ -227,6 +227,22 @@ li{
 		Спасибо за Ваш заказ
 	</p>
 </div>
+
+<div id="dialog-message2" title="Неверно определен маршрут">
+	<p>
+		<span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+		Должны быть введены следущие параметры: пункт прибытия и/или пункт отправления.
+	</p>
+</div>
+
+</div>
+
+<div id="dialog-message3" title="Неверно определен маршрут">
+	<p>
+		<span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+		Пункт прибытия и пункт отправления не должны быть одинаковы.
+	</p>
+</div>
 <script>
 
 $(document).ready(function(){
@@ -246,6 +262,8 @@ var kol=1;
 
 $("#dialog-confirm").hide();  // hide
 $("#dialog-message").hide();  // hide
+$("#dialog-message2").hide();  // hide
+$("#dialog-message3").hide();  // hide
 
 var dialog, form,
       emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
@@ -417,9 +435,26 @@ var dialog, form,
 			if(check(availableTags1,fr)==true && check(availableTags1,to)==true){	
 				$('body').append("<fieldset class='t1gen' id='f1'> <fieldset class='com'>   <p>"+fr+" - "+to+" </p><p>От: "+price+" рублей</p> <p>Время отправления: "+fr_correct+" </p> <p>Время прибытия: "+to_correct+"  </p> <button id='create-user' >Купить</button> </fieldset> </fieldset> ");
 			}else{
-				$('body').append("<fieldset class='t1gen' id='f1'> <fieldset class='com'>   <center><p>Такой маршрут отсутствует</p> </center>  </fieldset> </fieldset>");
+			
+				$( "#dialog-message2" ).dialog({
+					modal: true,
+					buttons: {
+						"Ок": function() {
+							$( this ).dialog( "close" );
+						}
+					}
+				});
+				('body').append("<fieldset class='t1gen' id='f1'> <fieldset class='com'>   <center><p>Такой маршрут отсутствует</p> </center>  </fieldset> </fieldset>");
 			}
 		}else{
+			$( "#dialog-message3" ).dialog({
+					modal: true,
+					buttons: {
+						"Ок": function() {
+							$( this ).dialog( "close" );
+						}
+					}
+				});
 			$('body').append("<fieldset class='t1gen' id='f1'> <fieldset class='com'>   <center><p>Такой маршрут отсутствует</p> </center> </fieldset> </fieldset>");
 		}
 		$( "#create-user" ).button().on( "click", function() {
@@ -529,10 +564,26 @@ var dialog, form,
 			if(check(availableTags2,fr)==true && check(availableTags2,to)==true){	
 				$('body').append("<fieldset class='t1gen' id='f1'> <fieldset class='com'>   <p>"+fr+" - "+to+" </p><p> Стоимость билета: "+price+" рублей</p> <p>Время отправления: "+fr_correct+" </p> <p>Время прибытия: "+to_correct+"  </p>  </fieldset> </fieldset> ");
 			}else{
-				$('body').append("<fieldset class='t1gen' id='f1'> <fieldset class='com'>   <center><p>Такой маршрут отсутствует</p> </center>  </fieldset> </fieldset>");
+				$( "#dialog-message2" ).dialog({
+					modal: true,
+					buttons: {
+						"Ок": function() {
+							$( this ).dialog( "close" );
+						}
+					}
+				});
 			}
 		}else{
-			$('body').append("<fieldset class='t1gen' id='f1'> <fieldset class='com'>   <center><p>Такой маршрут отсутствует</p> </center> </fieldset> </fieldset>");
+			$( "#dialog-message3" ).dialog({
+					modal: true,
+					buttons: {
+						"Ок": function() {
+							$( this ).dialog( "close" );
+						}
+					}
+				});
+		
+			
 		}
 		}
 		}
